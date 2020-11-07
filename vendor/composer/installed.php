@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '7389aa08d03f86eb2ee29894e3d6ef836a60f67b',
+    'reference' => '70a6cd89f4fdba0fd33ef3c9ed97a6bea6fcca51',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -442,12 +442,12 @@
     ),
     'jaybizzle/crawler-detect' => 
     array (
-      'pretty_version' => 'v1.2.101',
-      'version' => '1.2.101.0',
+      'pretty_version' => 'v1.2.102',
+      'version' => '1.2.102.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'bffc10d3090bc99231c17f9960506ab51e9d25f5',
+      'reference' => '346cfd72d11bb41f15e82654e532dc55360612ac',
     ),
     'jenssegers/agent' => 
     array (
@@ -499,7 +499,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '7389aa08d03f86eb2ee29894e3d6ef836a60f67b',
+      'reference' => '70a6cd89f4fdba0fd33ef3c9ed97a6bea6fcca51',
     ),
     'laravel/sanctum' => 
     array (
