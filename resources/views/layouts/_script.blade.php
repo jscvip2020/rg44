@@ -11,3 +11,6 @@
 <link rel="stylesheet" href="{{ asset("js/bootstrap.min.js") }}">
 
 <script src="{{ asset("js/bootstrap.bundle.min.js") }}"></script>
+<script src="{{ asset("js/jquery.fancybox.min.js") }}"></script>
+
+@yield('script')

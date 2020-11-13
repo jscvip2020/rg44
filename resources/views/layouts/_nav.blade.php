@@ -16,32 +16,20 @@
             <img src="{{ asset("images/logobranco.png") }}" alt="">
         </a>
         <ul class="navbar-nav ml-auto">
+            {{ request()->route()->getName() }}
             <li class="nav-item">
-                <a class="nav-link active" href="#">Notícias</a>
+                <a class="nav-link {{ (request()->route()->getName()=='noticias')? 'active': '' }}" href="{{ route('noticias') }}">Notícias</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Fotos</a>
+                <a class="nav-link {{ (request()->route()->getName()=='fotos' OR request()->route()->getName()=='album')? 'active' :'' }}" href="{{ route('fotos') }}">Fotos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Sobre</a>
+                <a class="nav-link {{ (request()->route()->getName()=='sobre')? 'active': '' }}" href="{{ route('sobre') }}">Sobre</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Contato</a>
+                <a class="nav-link {{ (request()->route()->getName() == "contato" )? 'active': '' }}" href="{{ route('contato') }}">Contato</a>
             </li>
         </ul>
-        {{--@if (Route::has('login'))--}}
-        {{--<div>--}}
-        {{--@auth--}}
-        {{--<a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>--}}
-        {{--@else--}}
-        {{--<a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>--}}
-
-        {{--@if (Route::has('register'))--}}
-        {{--<a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>--}}
-        {{--@endif--}}
-        {{--@endif--}}
-        {{--</div>--}}
-        {{--@endif--}}
     </div>
 </nav>
 

@@ -73,3 +73,100 @@ a.nav-link:hover {
 .nav-link.active{
     color: #86cfda !important;
 }
+
+.midias-link{
+    font-size: 20px;
+}
+
+.contato-dados{
+    padding-top: 50px;
+}
+
+.img-perfil{
+    display: block;
+    text-align: center;
+}
+
+.img-perfil img{
+    width: 100%;
+}
+
+.text-sobre{
+    text-align: justify;
+}
+
+.album-img{
+    position: relative;
+    text-align: center;
+}
+.album {
+    margin-bottom: 15px;
+    float: left;
+}
+.album-titulo{
+    position: absolute;
+    font-size: 1em;
+    color: #ffffff;
+    bottom: 0;
+    width: 100%;
+}
+.album-img img:hover{
+    opacity: 0.4;
+}
+.titulo{
+    text-align: left;
+    padding: 8px 30px 8px 30px;
+    margin-bottom: 20px;
+    font-family: cursive;
+    border-bottom: 1px solid;
+}
+.titulo2{
+    font-size: x-large;
+    text-align: left;
+    padding: 8px 30px 8px 30px;
+    font-family: cursive;
+}
+
+.foto{
+    padding-bottom: 15px;
+}
+.navPaginacao {
+    display: inline-block;
+}
+
+.ulPag {
+    list-style: none;
+}
+.pagInativo{
+    background-color: #333333;
+    color: #ffffff;
+}
+.pagAtivo{
+    background-color: #ffffff;
+    color: #000000;
+}
+.paginacao {
+    display: inline-block;
+    padding: 0 4px;
+    margin: 0;
+}
+.navegacao {
+    display: table;
+    width: 100%;
+    border-bottom: 1px solid;
+}
+.select{
+    color: #fff;
+    background-color: black;
+    border: none;
+}
+.lista a {
+    color: #ffffff;
+}
+.titleLista{
+
+}
+.descLista{
+    font-size: 10px;
+    text-align: justify;
+}
