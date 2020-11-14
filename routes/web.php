@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::namespace('BackEnd')->group(function () {
+Route::namespace('FrontEnd')->group(function () {
     Route::get('/', 'ControllerPrincipal@welcome')->name('welcome');
     Route::get('/noticias', 'ControllerPrincipal@noticias')->name('noticias');
 
@@ -25,7 +25,9 @@ Route::namespace('BackEnd')->group(function () {
     Route::get('/sobre', 'ControllerPrincipal@sobre')->name('sobre');
     Route::get('/contato', 'ControllerPrincipal@contato')->name('contato');
 });
+Route::namespace('BackEnd')->middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function (){
+    Route::get('/', 'DashboardController@index')->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+    Route::resource('galerias','GaleryController',['except'=>['show']]);
+    Route::get('galerias/{id}/{status}','GaleryController@status')->name('galerias.status');
+});

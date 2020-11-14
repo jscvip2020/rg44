@@ -16,7 +16,6 @@
             <img src="{{ asset("images/logobranco.png") }}" alt="">
         </a>
         <ul class="navbar-nav ml-auto">
-            {{ request()->route()->getName() }}
             <li class="nav-item">
                 <a class="nav-link {{ (request()->route()->getName()=='noticias')? 'active': '' }}" href="{{ route('noticias') }}">Notícias</a>
             </li>

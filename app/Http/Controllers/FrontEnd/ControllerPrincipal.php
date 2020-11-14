@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\BackEnd;
+namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -15,11 +16,14 @@ class ControllerPrincipal extends Controller
     public $perPagePhoto;
 
     public function __construct(){
-        $this->apiKey = "2a954f40e7345b0413bb81157ff1ea02";
-        $this->user_id = "144330139@N06";
-        $this->perPageAlbum = 6;
-        $this->perPagePhoto = 12;
-        $this->perPageList = 12;
+        $gallery = Gallery::where('status',1)->first();
+        if ($gallery) {
+            $this->apiKey = $gallery->apikey;
+            $this->user_id = $gallery->userid;
+            $this->perPageAlbum = $gallery->perpagealbum;
+            $this->perPagePhoto = $gallery->perpagephoto;
+            $this->perPageList = $gallery->perpagelist;
+        }
     }
 
     public function welcome(){
@@ -29,9 +33,14 @@ class ControllerPrincipal extends Controller
 
         $apiurl = file_get_contents("https://api.flickr.com/services/rest/?method=flickr.photosets.getList&per_page={$this->perPageAlbum}&api_key={$this->apiKey}&user_id={$this->user_id}&format=json&nojsoncallback=1");
         $albuns = json_decode($apiurl);
-        $albunsEnd =$albuns->photosets->photoset;
 
-        return view('backend.fotos', compact('albunsEnd'));
+        if ($albuns->stat != 'fail') {
+            $albunsEnd = $albuns->photosets->photoset;
+        }else{
+            $albunsEnd = null;
+        }
+
+        return view('frontend.fotos', compact('albunsEnd'));
     }
 
     public function album($id,$pg)
@@ -49,7 +58,7 @@ class ControllerPrincipal extends Controller
         }
         $albunsEnd = $albuns->photosets->photoset;
         $desc = $albuns->photosets->photoset[0]->description->_content;
-        return view('backend.album', compact(['fotos', 'pg', 'id', 'desc', 'albunsEnd']));
+        return view('frontend.album', compact(['fotos', 'pg', 'id', 'desc', 'albunsEnd']));
     }
 
     public function albumBusca(Request $request)
@@ -70,16 +79,16 @@ class ControllerPrincipal extends Controller
         $albuns = json_decode($apiurl);
         $albunsEnd =$albuns->photosets;
 //dd($albunsEnd);
-        return view('backend.albunslist', compact(['albunsEnd', 'pg']));
+        return view('frontend.albunslist', compact(['albunsEnd', 'pg']));
     }
 
     public function noticias(){
-        return view('backend.noticias');
+        return view('frontend.noticias');
     }
     public function sobre(){
-        return view('backend.sobre');
+        return view('frontend.sobre');
     }
     public function contato(){
-        return view('backend.contato');
+        return view('frontend.contato');
     }
 }

@@ -15,6 +15,18 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('galerias.index') }}" :active="request()->routeIs(['galerias.index','galerias.create','galerias.edit'])">
+                        {{ __('Fotos') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('medias.index') }}" :active="request()->routeIs(['medias.index','medias.create','medias.edit'])">
+                        {{ __('Médias') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="" :active="request()->routeIs('admin.noticias')">
+                        {{ __('Noticias') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="" :active="request()->routeIs('admin.config')">
+                        {{ __('Configurações') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
