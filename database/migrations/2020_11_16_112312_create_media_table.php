@@ -15,6 +15,10 @@ class CreateMediaTable extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->string('url');
+            $table->string('faicon');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

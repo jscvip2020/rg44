@@ -9,10 +9,12 @@
     <div class="copyright">© {{ date("Y") }} Copyright: {{ env('APP_NAME', "JSCVIP") }} </div>
     <div class="midias">
         <ul class="midias-bar">
-            <li class="midias-link"><a href="https://twitter.com/jscvip" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
-            <li class="midias-link"><a href="https://youtube.com/jscvip" target="_blank"><i class="fab fa-youtube"></i></a></li>
-            <li class="midias-link"><a href="https://www.facebook.com/cordeirojosesergio" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+            @foreach($medias as $media)
+                <li class="midias-link"><a href="{{ $media->url }}" target="_blank" title="{{ $media->nome }}"><i
+                                class="fab {{ $media->faicon }}"></i></a></li>
+            @endforeach
         </ul>
     </div>
-    <div class="desenvolvedor"><span>WebMaster: </span><a href="http://jscvip.mat.br" target="_blank">Jose Sergio Cordeiro</a></div>
+    <div class="desenvolvedor"><span>WebMaster: </span><a href="http://jscvip.mat.br" target="_blank">Jose Sergio
+            Cordeiro</a></div>
 </footer>

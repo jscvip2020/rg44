@@ -30,4 +30,7 @@ Route::namespace('BackEnd')->middleware(['auth:sanctum', 'verified'])->prefix('a
 
     Route::resource('galerias','GaleryController',['except'=>['show']]);
     Route::get('galerias/{id}/{status}','GaleryController@status')->name('galerias.status');
+
+    Route::resource('medias','MediaController',['except'=>['show']]);
+    Route::get('medias/{id}/{status}','MediaController@status')->name('medias.status');
 });

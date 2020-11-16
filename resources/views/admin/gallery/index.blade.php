@@ -11,7 +11,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Galerias de Fotos') }}
             <a href="{{ route('galerias.create') }}" class="btn float-right text-lg"> <i class="fa fa-plus">
-                    Novo</i></a>
+                    Nova Galeria</i></a>
         </h2>
     </x-slot>
     @include('layouts.messages')
