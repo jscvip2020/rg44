@@ -24,7 +24,7 @@
                     <x-jet-nav-link href="" :active="request()->routeIs('admin.noticias')">
                         {{ __('Noticias') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="" :active="request()->routeIs('admin.config')">
+                    <x-jet-nav-link href="{{ route('configs.index') }}" :active="request()->routeIs('configs.index')">
                         {{ __('Configurações') }}
                     </x-jet-nav-link>
                 </div>

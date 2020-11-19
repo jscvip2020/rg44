@@ -13,7 +13,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <a class="navbar-brand" href="/">
-            <img src="{{ asset("images/logobranco.png") }}" alt="">
+            <img src="{{ asset("images/".env('LOGO_BRANCO')) }}" alt="logo {{ env('APP_NAME') }}">
         </a>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">

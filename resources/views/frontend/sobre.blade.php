@@ -11,10 +11,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="logo-text col-md-12 col-sm-12 col-lg-12">
-                <img src="{{ asset('images/rg44.png') }}" alt="Logo com nome">
+                <img src="{{ asset('images/'.env('TEXTO_PERFIL')) }}" alt="Logo com nome">
             </div>
             <div class="img-perfil col-md-4 col-lg-4 col-sm-4">
-                <img src="{{ asset('images/FOTO-PERFIL-REGINALDO.png') }}" alt="Foto perfil">
+                <img src="{{ asset('images/'.env('FOTO_PERFIL')) }}" alt="Foto perfil">
             </div>
             <div class="text-sobre col-md-8 col-lg-8 col-sm-8">
                 Meu nome é Reginado Rodrigues.

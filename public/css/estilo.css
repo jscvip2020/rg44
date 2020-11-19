@@ -170,3 +170,10 @@ a.nav-link:hover {
     font-size: 10px;
     text-align: justify;
 }
+
+.button-input{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

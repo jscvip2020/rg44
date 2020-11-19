@@ -33,4 +33,15 @@ Route::namespace('BackEnd')->middleware(['auth:sanctum', 'verified'])->prefix('a
 
     Route::resource('medias','MediaController',['except'=>['show']]);
     Route::get('medias/{id}/{status}','MediaController@status')->name('medias.status');
+
+
+    Route::get('configs','ConfigController@index')->name('configs.index');
+    Route::post('configs','ConfigController@config')->name('configs.env');
+    Route::post('configs/logobranco','ConfigController@logobranco')->name('configs.logobranco');
+    Route::post('configs/logopreto','ConfigController@logopreto')->name('configs.logopreto');
+    Route::post('configs/fotoperfil','ConfigController@fotoperfil')->name('configs.fotoperfil');
+    Route::post('configs/textoperfil','ConfigController@textoperfil')->name('configs.textoperfil');
+    Route::post('configs/video','ConfigController@video')->name('configs.video');
+
+
 });

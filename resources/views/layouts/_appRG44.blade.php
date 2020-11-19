@@ -9,7 +9,7 @@
 <body style="background-color: #000000;">
 <div class="bloco">
     <video muted autoplay loop class="video">
-        <source src="{{ asset("videos/video.mp4") }}" type="video/mp4">
+        <source src="{{ asset("videos/".env('VIDEO')) }}" type="video/mp4">
     </video>
     <div class="tranparente">
     </div>

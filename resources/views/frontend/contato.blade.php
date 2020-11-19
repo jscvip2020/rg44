@@ -17,14 +17,14 @@
                 </p>
                 <address>
                     <h1>RG44</h1>
-                    <strong>Rua: </strong><span>Ruas das Orquidias, 2424</span><br>
-                    <strong>Bairro: </strong> <span>Jardim das flores</span><br>
-                    <strong>CEP: </strong> <span>87500-000</span><br>
-                    <strong>Cidade/UF: </strong> <span>Pérola/PR.</span><br>
+                    <strong>Rua: </strong><span>{{ env('ENDERECO') }}</span><br>
+                    <strong>Bairro: </strong> <span>{{ env('BAIRRO') }}</span><br>
+                    <strong>CEP: </strong> <span>{{ env('CEP') }}</span><br>
+                    <strong>Cidade/UF: </strong> <span>{{ env('CIDADE_UF') }}</span><br>
                 </address>
                 <address>
-                    <strong><i class="fa fa-envelope"></i> </strong><span>contato@rg44.com.br</span><br>
-                    <strong><i class="fa fa-phone"></i> </strong> <span>44 9.9999-5555</span><br>
+                    <strong><i class="fa fa-envelope"></i> </strong><span><a href="mailto://{{ env('EMAIL') }}">{{ env('EMAIL') }}</a></span><br>
+                    <strong><i class="fa fa-phone"></i> </strong> <span>{{ env('TELEFONES') }}</span><br>
                 </address>
 
 

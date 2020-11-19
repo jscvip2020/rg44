@@ -31,6 +31,7 @@ class ControllerPrincipal extends Controller
 
     public function welcome(){
         $medias = $this->media;
+//        dd($medias);
         return view('welcome', compact(['medias']));
     }
     public function fotos(){
@@ -43,7 +44,7 @@ class ControllerPrincipal extends Controller
         }else{
             $albunsEnd = null;
         }
-
+        $medias = $this->media;
         return view('frontend.fotos', compact(['albunsEnd', 'medias']));
     }
 
