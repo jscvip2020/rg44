@@ -13,12 +13,10 @@
             <div class="col-md-8 col-sm-1">
                 <h2>Fale comigo!</h2>
                 <p>
-                    Se estiver precisando de meus serviços ou precisar de mais informações sobre o meu trabalho, entre em contato.
+                    Olá! Você poderá falar comigo em algumas das opções que disponibilizei.
                 </p>
                 <address>
                     <h1>RG44</h1>
-                    <strong>Rua: </strong><span>{{ env('ENDERECO') }}</span><br>
-                    <strong>Bairro: </strong> <span>{{ env('BAIRRO') }}</span><br>
                     <strong>CEP: </strong> <span>{{ env('CEP') }}</span><br>
                     <strong>Cidade/UF: </strong> <span>{{ env('CIDADE_UF') }}</span><br>
                 </address>
@@ -30,7 +28,7 @@
 
             </div>
             <div class="col-md-4 col-sm-1">
-                <h2>Deixe aqui sua mensagem!</h2>
+                <h2>Deixe-me uma mensagem (com o seu contato)</h2>
                 <form>
                     <div class="form-group">
                         <label for="nome">Nome</label>

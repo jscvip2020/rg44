@@ -25,6 +25,7 @@ Route::namespace('FrontEnd')->group(function () {
     Route::get('/sobre', 'ControllerPrincipal@sobre')->name('sobre');
     Route::get('/contato', 'ControllerPrincipal@contato')->name('contato');
 });
+
 Route::namespace('BackEnd')->middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function (){
     Route::get('/', 'DashboardController@index')->name('dashboard');
 
@@ -43,5 +44,6 @@ Route::namespace('BackEnd')->middleware(['auth:sanctum', 'verified'])->prefix('a
     Route::post('configs/textoperfil','ConfigController@textoperfil')->name('configs.textoperfil');
     Route::post('configs/video','ConfigController@video')->name('configs.video');
 
-
+    Route::get('usuarios', 'UserController@index')->name('users.index');
+    Route::delete('usuarios/{id}', 'UserController@destroy')->name('users.destroy');
 });

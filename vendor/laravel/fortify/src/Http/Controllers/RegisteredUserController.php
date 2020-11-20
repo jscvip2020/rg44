@@ -27,6 +27,7 @@ class RegisteredUserController extends Controller
      */
     public function __construct(StatefulGuard $guard)
     {
+
         $this->guard = $guard;
     }
 

@@ -20,7 +20,6 @@ use Laravel\Fortify\Http\Controllers\VerifyEmailController;
 
 Route::group(['middleware' => config('fortify.middleware', ['web'])], function () {
     $enableViews = config('fortify.views', true);
-
     // Authentication...
     if ($enableViews) {
         Route::get('/login', [AuthenticatedSessionController::class, 'create'])
@@ -39,6 +38,7 @@ Route::group(['middleware' => config('fortify.middleware', ['web'])], function (
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
+    //dd('teste');
     // Password Reset...
     if (Features::enabled(Features::resetPasswords())) {
         if ($enableViews) {
@@ -64,12 +64,12 @@ Route::group(['middleware' => config('fortify.middleware', ['web'])], function (
     if (Features::enabled(Features::registration())) {
         if ($enableViews) {
             Route::get('/register', [RegisteredUserController::class, 'create'])
-                ->middleware(['guest'])
+                ->middleware(['auth'])
                 ->name('register');
         }
 
         Route::post('/register', [RegisteredUserController::class, 'store'])
-            ->middleware(['guest']);
+            ->middleware(['auth']);
     }
 
     // Email Verification...

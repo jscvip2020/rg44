@@ -148,34 +148,6 @@
                                     <h2>Configurações Endereço</h2>
                                     <hr>
                                 </div>
-                                @php $input = 'ENDERECO'; @endphp
-                                <div class="form-group row">
-                                    <label for="{{$input}}" class="col-md-4 control-label">{{ $input }}</label>
-
-                                    <div class="col-md-8">
-                                        <input id="{{$input}}" type="text"
-                                               class="form-control {{ $errors->has($input) ? ' is-invalid' : '' }}"
-                                               name="{{$input}}"
-                                               value="{{ isset($row) ? $row->$input : env($input) }}">
-                                        @if ($errors->has($input))
-                                            <span class="help-block invalid-feedback"><strong>{{ $errors->first($input) }}</strong></span>
-                                        @endif
-                                    </div>
-                                </div>
-                                @php $input = 'BAIRRO'; @endphp
-                                <div class="form-group row">
-                                    <label for="{{$input}}" class="col-md-4 control-label">{{ $input }}</label>
-
-                                    <div class="col-md-8">
-                                        <input id="{{$input}}" type="text"
-                                               class="form-control {{ $errors->has($input) ? ' is-invalid' : '' }}"
-                                               name="{{$input}}"
-                                               value="{{ isset($row) ? $row->$input : env($input) }}">
-                                        @if ($errors->has($input))
-                                            <span class="help-block invalid-feedback"><strong>{{ $errors->first($input) }}</strong></span>
-                                        @endif
-                                    </div>
-                                </div>
                                 @php $input = 'CEP'; @endphp
                                 <div class="form-group row">
                                     <label for="{{$input}}" class="col-md-4 control-label">{{ $input }}</label>

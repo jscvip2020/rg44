@@ -17,14 +17,7 @@
                 <img src="{{ asset('images/'.env('FOTO_PERFIL')) }}" alt="Foto perfil">
             </div>
             <div class="text-sobre col-md-8 col-lg-8 col-sm-8">
-                Meu nome é Reginado Rodrigues.
-                <br>
-                Sou um fotógrafo profissional de Pérola, Pr. Espero que você goste do meu portfólio de fotos e depois
-                disso possamos criar algo ótimo juntos! Através das lentes, o mundo parece diferente e eu gostaria de mostrar
-                essa diferença. Aprendi a fotografar e desde então a fotografia tornou-se meu Robby e paixão. Depois disso,
-                com anos de prática e toneladas de experiência, aprendi as técnicas, o que me ajuda no meu trabalho com
-                Eventos em várias cidades da Região. Atendo Festas de Rodeios, Igrejas, Eventos, etc. E tudo isso pode ser seu,
-                basta entrar em <a href="/contato">contato</a>.
+                Sou Reginaldo Rodrigues, com formação na área de Filosofia, Teologia, Pedagogia, Informática e Fotografia. O gosto pela informática nasceu ainda em 1996 e fotografia em 1999, somente em 2011 iniciei efetivamente atividade na área da comunicação, mídias sociais e fotografia religiosa. Hoje, divido o tempo vago entre família, estudo e fotografia... eventos automotivos, esportes radicais, ciclo turismo, entretenimento, e eventos beneficentes, com cobertura colaborativa e gratuita. Busco através da foto e vídeo mostrar o cotidiano e a beleza própria de cada pessoa, evidenciar a harmonia das pessoas com a natureza e o mundo.
             </div>
         </div>
     </div>
