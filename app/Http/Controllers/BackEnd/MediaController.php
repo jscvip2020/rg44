@@ -157,6 +157,5 @@ class MediaController extends Controller
         }catch (ModelNotFoundException $e){
             return redirect()->route('medias.index')->with('error', 'Não foi possível encontrar a media!');
         }
-        dd($gallery);
     }
 }

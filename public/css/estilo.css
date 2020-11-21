@@ -117,6 +117,7 @@ a.nav-link:hover {
     opacity: 0.4;
 }
 .titulo{
+    font-size: revert;
     text-align: left;
     padding: 8px 30px 8px 30px;
     margin-bottom: 20px;

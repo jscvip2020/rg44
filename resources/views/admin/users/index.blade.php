@@ -21,8 +21,8 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th class="text-center">Nome</th>
-                        <th class="text-center">Email</th>
+                        <th class="text-left">Nome</th>
+                        <th class="text-left">Email</th>
                         <th class="text-center"></th>
                     </tr>
                     </thead>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 use App\Models\Gallery;
 use App\Models\Media;
 use Illuminate\Http\Request;
@@ -33,6 +34,12 @@ class ControllerPrincipal extends Controller
         $medias = $this->media;
 //        dd($medias);
         return view('welcome', compact(['medias']));
+    }
+    public function eventos(){
+        $eventos = Event::where('status',1)->paginate(10);
+        $medias = $this->media;
+
+        return view('frontend.eventos', compact(['medias','eventos']));
     }
     public function fotos(){
 

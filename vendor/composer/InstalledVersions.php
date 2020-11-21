@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '70a6cd89f4fdba0fd33ef3c9ed97a6bea6fcca51',
+    'reference' => '9dea7045aecc903e9cd559a03cb292e10270b03c',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -453,6 +453,15 @@ private static $installed = array (
         0 => 'v8.13.0',
       ),
     ),
+    'intervention/image' => 
+    array (
+      'pretty_version' => '2.5.1',
+      'version' => '2.5.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'abbf18d5ab8367f96b3205ca3c89fb2fa598c69e',
+    ),
     'jaybizzle/crawler-detect' => 
     array (
       'pretty_version' => 'v1.2.102',
@@ -512,7 +521,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '70a6cd89f4fdba0fd33ef3c9ed97a6bea6fcca51',
+      'reference' => '9dea7045aecc903e9cd559a03cb292e10270b03c',
     ),
     'laravel/sanctum' => 
     array (

@@ -22,6 +22,7 @@ Route::namespace('FrontEnd')->group(function () {
     Route::post('/album', 'ControllerPrincipal@albumBusca')->name('albums');
     Route::get('/albuns/{id}', 'ControllerPrincipal@albumList')->name('album.list');
 
+    Route::get('/eventos', 'ControllerPrincipal@eventos')->name('eventos');
     Route::get('/sobre', 'ControllerPrincipal@sobre')->name('sobre');
     Route::get('/contato', 'ControllerPrincipal@contato')->name('contato');
 });
@@ -46,4 +47,8 @@ Route::namespace('BackEnd')->middleware(['auth:sanctum', 'verified'])->prefix('a
 
     Route::get('usuarios', 'UserController@index')->name('users.index');
     Route::delete('usuarios/{id}', 'UserController@destroy')->name('users.destroy');
+
+    Route::resource('eventos','EventoController');
+    Route::get('eventos/{id}/{status}','EventoController@status')->name('eventos.status');
+
 });

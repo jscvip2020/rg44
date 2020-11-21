@@ -30,6 +30,9 @@
                     <x-jet-nav-link href="" :active="request()->routeIs('parceiros.index')">
                         {{ __('Parceiros') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('eventos.index') }}" :active="request()->routeIs('eventos.index','eventos.create','eventos.edit')">
+                        {{ __('Eventos') }}
+                    </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('configs.index') }}" :active="request()->routeIs('configs.index')">
                         {{ __('Configurações') }}
                     </x-jet-nav-link>

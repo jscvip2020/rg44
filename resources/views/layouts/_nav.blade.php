@@ -23,6 +23,12 @@
                 <a class="nav-link {{ (request()->route()->getName()=='fotos' OR request()->route()->getName()=='album')? 'active' :'' }}" href="{{ route('fotos') }}">Fotos</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link {{ (request()->route()->getName()=='eventos')? 'active' :'' }}" href="{{ route('eventos') }}">Eventos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ (request()->route()->getName()=='fotos' OR request()->route()->getName()=='album')? 'active' :'' }}" href="{{ route('fotos') }}">Fotos</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link {{ (request()->route()->getName()=='sobre')? 'active': '' }}" href="{{ route('sobre') }}">Sobre</a>
             </li>
             <li class="nav-item">
