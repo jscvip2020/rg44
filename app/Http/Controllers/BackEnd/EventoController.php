@@ -72,6 +72,7 @@ class EventoController extends Controller
                     'titulo' => $request->titulo,
                     'data' => $request->data,
                     'local' => $request->local,
+                    'link' => $request->link,
                     'imagem' => $imageName,
                 ]);
             } else {
@@ -146,6 +147,7 @@ class EventoController extends Controller
                         'titulo' => $request->titulo,
                         'data' => $request->data,
                         'local' => $request->local,
+                        'link' => $request->link,
                     ]);
                 }else {
                     $file_path = public_path("images/eventos/" . $row->imagem);
@@ -174,6 +176,7 @@ class EventoController extends Controller
                             'titulo' => $request->titulo,
                             'data' => $request->data,
                             'local' => $request->local,
+                            'link' => $request->link,
                             'imagem' => $imageName,
                         ]);
                     }

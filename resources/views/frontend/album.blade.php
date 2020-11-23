@@ -88,7 +88,7 @@
             buttons: [
                 'download',
                 'fb',
-                'play',
+                'slideShow',
                 'thumbs',
                 'close'
             ],

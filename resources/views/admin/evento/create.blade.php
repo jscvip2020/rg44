@@ -68,6 +68,23 @@
                                         @endif
                                     </div>
                                 </div>
+                                @php $input = 'link'; @endphp
+                                <div class="form-group">
+                                    <label for="{{$input}}" class="col-md-12 control-label">Link para o Evento</label>
+
+                                    <div class="col-md-12">
+                                        <input id="{{$input}}" type="text" class="col-md-12 form-control {{ $errors->has($input) ? ' is-invalid' : '' }}" name="{{$input}}"
+                                               placeholder="#"
+                                               value="{{ isset($row) ? $row->$input : old($input) }}">
+
+                                        <small id="apikeyHelper" class="form-text text-muted">
+                                            Se houver um link para o evento Ex: http://lolapalusa.com.
+                                        </small>
+                                        @if ($errors->has($input))
+                                            <span class="help-block invalid-feedback"><strong>{{ $errors->first($input) }}</strong></span>
+                                        @endif
+                                    </div>
+                                </div>
                                 @php $input = 'imagem'; @endphp
                                 <div class="form-group">
                                     <label for="{{$input}}" class="col-md-12 control-label">Imagem para o Evento</label>

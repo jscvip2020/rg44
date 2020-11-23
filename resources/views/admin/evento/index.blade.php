@@ -25,6 +25,7 @@
                         <th class="text-left">Titulo</th>
                         <th class="text-left">Data</th>
                         <th class="text-left">Local</th>
+                        <th class="text-left">Link</th>
                         <th class="text-center">Ativo?</th>
                         <th class="text-center"></th>
                     </tr>
@@ -33,9 +34,10 @@
                     @foreach($eventos as $evento)
                         <tr>
                             <td><img src="{{ asset('images/eventos/'.$evento->imagem) }}" alt="{{ $evento->titulo }}" width="150"></td>
-                            <td class="align-middle">{{ $evento->titulo }}</tdalig>
-                            <td class="align-middle">{{ $evento->data }}</td>
-                            <td class="align-middle">{{ $evento->local }}</td>
+                            <td >{{ $evento->titulo }}</td>
+                            <td >{{ $evento->data }}</td>
+                            <td >{{ $evento->local }}</td>
+                            <td >{{ $evento->link }}</td>
                             <td class="text-center align-middle">
                                 @if($evento->status)
                                     <a href="{{ route('eventos.status',[$evento->id,$evento->status]) }}" class="text-success"><i class="fa fa-check-circle fa-2x"></i></a>
@@ -43,7 +45,7 @@
                                     <a href="{{ route('eventos.status',[$evento->id,$evento->status]) }}" title="Ativar {{ $evento->titulo }}" class="text-danger"><i class="fa fa-times-circle fa-2x"></i></a>
                                 @endif
                             </td>
-                            <td class="align-middle">
+                            <td class="align-middle" style="min-width: 125px;">
                                 <a href="{{ route('eventos.edit',[$evento->id]) }}" title="Editar {{ $evento->titulo }}" class="btn btn-info btn-sm float-left"><i class="fa fa-edit"></i></a>
                                 <form id="form-delete{{$evento->id}}" action="{{ route('eventos.destroy', $evento->id) }}" method="POST" class="float-left">
                                     <input type="hidden" name="_method" value="DELETE">
