@@ -10,7 +10,6 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <h1>teste</h1>
             @if($eventos)
                 <h1 class="titulo col-md-12 mt-8" style="margin-top: 30px;"><i class="fa fa-calendar-alt"></i> Eventos
                     <div class="float-right col-md-6" style="font-size: initial;">

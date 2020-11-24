@@ -24,6 +24,14 @@
                     <strong><i class="fa fa-envelope"></i> </strong><span><a href="mailto://{{ env('EMAIL') }}">{{ env('EMAIL') }}</a></span><br>
                     <strong><i class="fa fa-phone"></i> </strong> <span>{{ env('TELEFONES') }}</span><br>
                 </address>
+                <address>
+                    <ul class="midias-bar" style="justify-content: normal;">
+                    @foreach($medias as $media)
+                        <li class="midias-link" style=" font-size: 36px;"><a href="{{ $media->url }}" target="_blank" title="{{ $media->nome }}"><i
+                                        class="fab {{ $media->faicon }}"></i></a></li>
+                    @endforeach
+                    </ul>
+                </address>
 
 
             </div>

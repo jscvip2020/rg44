@@ -181,3 +181,48 @@ a.nav-link:hover {
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.card-person-head{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 3;
+}
+.card-person-content{
+    background: #17171B;
+    margin: -40px 0 0 30px;
+    padding: 45px 29px 28px 29px;
+}
+
+.card-person-content p {
+    color: #ffffff;
+}
+
+.card-person-head img{
+    width: 155px;
+    border-radius: 50%;
+    box-shadow: 2px 3px 15px rgba(0,0,0,0.3);
+}
+.card-person-label{
+    text-align: right;
+}
+.card-person-label h4{
+    margin: 27px 0 0 0;
+    font-size: 30px;
+    line-height: 35px;
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.card-person-label h4 span{
+    font-size: 12px;
+    line-height: 15px;
+    margin: 0 0 0 0;
+    display: block;
+    color: #5C5C60;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}

@@ -99,7 +99,7 @@ class EventoController extends Controller
             $row = Event::findOrFail($id);
             return view('admin.evento.show', compact('row'));
         }catch (ModelNotFoundException $e){
-            return redirect()->route('eventos.index')->with('error', 'Não foi possível encontrar a evento!');
+            return redirect()->route('eventos.index')->with('error', 'Não foi possível encontrar o evento!');
         }
     }
 
@@ -116,7 +116,7 @@ class EventoController extends Controller
             return view('admin.evento.edit', compact('row'));
 
         }catch (ModelNotFoundException $e){
-            return redirect()->route('eventos.index')->with('error', 'Não foi possível encontrar a EVENTO!');
+            return redirect()->route('eventos.index')->with('error', 'Não foi possível encontrar o EVENTO!');
         }
     }
 
@@ -182,12 +182,12 @@ class EventoController extends Controller
                     }
                 }
                 if ($action) {
-                    return redirect()->route('eventos.index')->with('success', 'Evento inserida com sucesso!');
+                    return redirect()->route('eventos.index')->with('success', 'Evento alterado com sucesso!');
                 } else {
-                    return redirect()->route('eventos.index')->with('error', 'Não foi possível inserir a evento!');
+                    return redirect()->route('eventos.index')->with('error', 'Não foi possível alterar o evento!');
                 }
             }catch (ModelNotFoundException $e){
-                return redirect()->route('eventos.index')->with('error', 'Não foi possível encontrar a evento!');
+                return redirect()->route('eventos.index')->with('error', 'Não foi possível encontrar o evento!');
             }
 
         }
@@ -213,11 +213,11 @@ class EventoController extends Controller
                 if ($action) {
                     return redirect()->route('eventos.index')->with('success', "Evento $row->titulo DELETADO com sucesso!");
                 } else {
-                    return redirect()->route('eventos.index')->with('error', "Não foi possível DELETAR a evento  $row->titulo!");
+                    return redirect()->route('eventos.index')->with('error', "Não foi possível DELETAR o evento  $row->titulo!");
                 }
 
         }catch (ModelNotFoundException $e){
-            return redirect()->route('eventos.index')->with('error', 'Não foi possível encontrar a evento!');
+            return redirect()->route('eventos.index')->with('error', 'Não foi possível encontrar o evento!');
         }
     }
 

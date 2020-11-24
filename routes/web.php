@@ -23,8 +23,10 @@ Route::namespace('FrontEnd')->group(function () {
     Route::get('/albuns/{id}', 'ControllerPrincipal@albumList')->name('album.list');
 
     Route::get('/eventos', 'ControllerPrincipal@eventos')->name('eventos');
+    Route::get('/parceiros', 'ControllerPrincipal@parceiros')->name('parceiros');
     Route::get('/sobre', 'ControllerPrincipal@sobre')->name('sobre');
     Route::get('/contato', 'ControllerPrincipal@contato')->name('contato');
+    Route::post('/contato','ControllerPrincipal@emailContato')->name('email.contato');
 });
 
 Route::namespace('BackEnd')->middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function (){
@@ -50,5 +52,9 @@ Route::namespace('BackEnd')->middleware(['auth:sanctum', 'verified'])->prefix('a
 
     Route::resource('eventos','EventoController');
     Route::get('eventos/{id}/{status}','EventoController@status')->name('eventos.status');
+
+    Route::resource('parceiros','ParceiroController');
+    Route::get('parceiros/{id}/{status}','ParceiroController@status')->name('parceiros.status');
+
 
 });
