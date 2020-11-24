@@ -8,7 +8,9 @@ use App\Models\Gallery;
 use App\Models\Media;
 use App\Models\Parceiro;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class ControllerPrincipal extends Controller
 {
@@ -55,32 +57,34 @@ class ControllerPrincipal extends Controller
         return view('frontend.parceiros', compact(['medias', 'parceiros']));
     }
 
-    public function emailContato()
+    public function emailContato(Request $request)
     {
-        Mail::send('emails.retorno', $request->all(), function ($message) {
-            $message->to(request()->input('email'), request()->input('nome'))
-                ->subject('Email Recebido');
-            $message->from('contato@fenixbyte.com', 'Fenix Byte Informática');
-        });
-        Mail::send('emails.contato', request()->all(), function ($message) {
-            $message->to('contato@fenixbyte.com', 'Fenix Byte Informática')
-                ->subject('Contato via Site - ' . request()->input('assunto'));
-            $message->from('contato@fenixbyte.com', 'Fenix Byte Informática');
-        });
 
-        $config = $this->configSite()[0];
-        $pageTitle = "Contato " . $config->name;
-        $dados = [
-            'name' => $config->name,
-            'title' => $pageTitle,
-            'description' => $config->desc,
-            'keywords' => $config->keywords,
-        ];
+        $validator = Validator::make($request->all(), [
+            'nome' => 'required|string',
+            'email' => 'required|email',
+            'assunto' => 'required|string|min:10',
+            'mensagem' => 'required|min:20'
+        ]);
 
-        Mensagem::create($request->all());
+        if ($validator->fails()) {
+            return redirect()->route('contato')
+                ->withErrors($validator)
+                ->withInput();
+        }else{
 
-        Session::flash('emailsuccess', 'Email enviado Com sucesso!!!');
-        return view('front-end.contato', compact('config', 'dados', 'pageTitle'));
+            Mail::send('emails.retorno', $request->all(), function ($message) {
+                $message->to(request()->input('email'), request()->input('nome'))
+                    ->subject('Email Recebido');
+                $message->from('contato@rg44.com.br', 'RG44 Fotos');
+            });
+            Mail::send('emails.contato', request()->all(), function ($message) {
+                $message->to('contato@fenixbyte.com', 'RG44 Fotos')
+                    ->subject('Contato via Site - ' . request()->input('assunto'));
+                $message->from(request()->input('email'), request()->input('nome'));
+            });
+                return redirect()->route('contato')->with('success', 'Email enviado com sucesso!');
+        }
     }
 
 public
