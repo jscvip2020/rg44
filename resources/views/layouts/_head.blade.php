@@ -11,6 +11,22 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:url" content="{{Request::url()}}">
+
+    <meta property="og:title" content="{{($row)?$row->titulo:'RG44 fotos e eventos'}}">
+    <meta property="og:site_name" content="{{ env('APP_NAME') }}">
+
+    <meta property="og:description" content="{{($row)?strip_tags($row->texto):'Fotos e noticias de eventos de Pérola e região'}}">
+
+    <meta property="og:image" content="{{ ($row)?($row->capa =='default.jpg')?asset('images/'.$row->capa):asset('images/noticias/capas/'.$row->capa):asset('images/'.env('LOGO_PRETO')) }}">
+
+
+    <meta property="og:type" content="website">
+
+    <meta name="keywords" content="fotos, notícias, eventos"/>
+
+    <link rel="shortcut icon" href="{{ asset('favicon.ico')}}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('/favicon.ico')}}" type="image/x-icon">
 
     <title>{{ env('APP_NAME', "JSCVIP") }} @yield('titulo')</title>
 

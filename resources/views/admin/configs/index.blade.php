@@ -350,7 +350,7 @@
                         @csrf
                         <input type="hidden" name="key" value="VIDEO">
                         <div class="row">
-                            <video>
+                            <video autoplay muted>
                                 <source src="{{ asset("videos/".env('VIDEO')) }}" type="video/mp4">
                             </video>
                             </div>

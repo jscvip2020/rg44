@@ -17,7 +17,7 @@
         </a>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link {{ (request()->route()->getName()=='noticias')? 'active': '' }}" href="{{ route('noticias') }}">Notícias</a>
+                <a class="nav-link {{ (request()->route()->getName()=='noticias.all' OR request()->route()->getName()=='noticia.single')? 'active': '' }}" href="{{ route('noticias.all') }}">Notícias</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ (request()->route()->getName()=='fotos' OR request()->route()->getName()=='album')? 'active' :'' }}" href="{{ route('fotos') }}">Fotos</a>

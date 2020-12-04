@@ -18,7 +18,6 @@ class ConfigController extends Controller
     public static function config(Request $request)
     {
         $path = base_path('.env');
-
         foreach($request->all() as $key=>$value){
             if (is_bool(env($key))) {
                 $old = env($key) ? 'true' : 'false';
@@ -30,7 +29,8 @@ class ConfigController extends Controller
             } else {
                 $old = env($key);
             }
-            file_put_contents($path, str_replace("$key=" . $old, "$key=" . $value, file_get_contents($path)));
+
+               file_put_contents($path, str_replace("$key=" . $old, "$key=" . $value, file_get_contents($path)));
         }
 
         return Redirect::to('admin/configs');

@@ -19,7 +19,7 @@ class ParceiroController extends Controller
      */
     public function index()
     {
-        $rows = Parceiro::paginate(10);
+        $rows = Parceiro::orderBy('id', 'DESC')->paginate(10);
 
         return view('admin.parceiro.index', compact('rows'));
     }
@@ -45,7 +45,7 @@ class ParceiroController extends Controller
         $validator = Validator::make($request->all(), [
             'nome' => 'required|unique:parceiros',
             'area' => 'required',
-            'imagem' => 'required|mimes:jpg,png,jpeg',
+            'imagem' => 'required|mimes:jpg,png,jpeg|max:2000',
             'endereco' => 'nullable|min:10',
             'descricao' => 'nullable|min:10'
         ]);
@@ -142,7 +142,7 @@ class ParceiroController extends Controller
         $validator = Validator::make($request->all(), [
             'nome' => 'required|unique:parceiros,nome,'.$id,
             'area' => 'required',
-            'imagem' => 'mimes:jpg,png,jpeg',
+            'imagem' => 'mimes:jpg,png,jpeg|max:2000',
             'endereco' => 'nullable|min:10',
             'descricao' => 'nullable|min:10'
         ]);

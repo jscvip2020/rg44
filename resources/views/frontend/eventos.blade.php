@@ -16,25 +16,25 @@
                         {{ $eventos->links() }}
                     </div>
                 </h1>
-                @foreach($eventos as $row)
+                @foreach($eventos as $evento)
                     <div class="card m-3 p-1 col-md-6"
                          style="background-color: #212121;max-width: 600px;max-height: 185px">
                         <div class="row no-gutters">
                             <div class="col-md-6 ">
                                 <a data-fancybox="gallery"
-                                   href="{{ asset('images/eventos/'.$row->imagem) }}"
-                                   title="{{$row->titulo}}">
-                                    <img src="{{ asset('images/eventos/'.$row->imagem) }}" class="card-img m-auto"
-                                         alt="{{ $row->titulo }}" style="max-height: 175px; width: auto">
+                                   href="{{ asset('images/eventos/'.$evento->imagem) }}"
+                                   title="{{$evento->titulo}}">
+                                    <img src="{{ asset('images/eventos/'.$evento->imagem) }}" class="card-img m-auto"
+                                         alt="{{ $evento->titulo }}" style="max-height: 175px; width: auto">
                                 </a>
                             </div>
                             <div class="col-md-6">
                                 <div class="card-body">
-                                    <h5 class="card-title" style="font-size: 1.5rem;">{{ $row->titulo }}</h5>
-                                    <p class="card-subtitle font-semibold">{{ $row->data }}</p>
-                                    <p class="card-text">{{ $row->local }}</p>
-                                    @if($row->link != '#')
-                                        <a href="{{ $row->link }}" class="btn btn-light btn-sm" target="_blank">Veja mais</a>
+                                    <h5 class="card-title" style="font-size: 1.5rem;">{{ $evento->titulo }}</h5>
+                                    <p class="card-subtitle font-semibold">{{ $evento->data }}</p>
+                                    <p class="card-text">{{ $evento->local }}</p>
+                                    @if($evento->link != '#')
+                                        <a href="{{ $evento->link }}" class="btn btn-light btn-sm" target="_blank">Veja mais</a>
                                     @endif
                                 </div>
                             </div>

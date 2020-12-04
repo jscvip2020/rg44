@@ -13,4 +13,11 @@
 <script src="{{ asset("js/bootstrap.bundle.min.js") }}"></script>
 <script src="{{ asset("js/jquery.fancybox.min.js") }}"></script>
 
+<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+
+{{-- API FACEBOOK --}}
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v9.0&appId=375971005831615&autoLogAppEvents=1" nonce="RQtbP1cO"></script>
+{{-- END API FACEBOOK --}}
+
 @yield('script')

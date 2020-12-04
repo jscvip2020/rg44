@@ -17,51 +17,51 @@
                         {{ $parceiros->links() }}
                     </div>
                 </h1>
-                @foreach($parceiros as $row)
+                @foreach($parceiros as $parceiro)
                     <div class="card-person col-md-6">
                         <div class="card-person-head">
                             <div class="card-person-image">
-                                <img src="{{ asset('images/parceiros/'.$row->imagem) }}" alt="{{ $row->nome }}">
+                                <img src="{{ asset('images/parceiros/'.$parceiro->imagem) }}" alt="{{ $parceiro->nome }}">
                             </div>
                             <div class="card-person-label">
                                 <h4>
-                                    <span>{{ $row->area }}</span>
-                                    {{ $row->nome }}
+                                    <span>{{ $parceiro->area }}</span>
+                                    {{ $parceiro->nome }}
                                 </h4>
                             </div>
                         </div><!-- .ashade-service-card__head -->
                         <div class="card-person-content">
-                            <p class="text-justify">{{ $row->descricao }}</p>
+                            <p class="text-justify">{{ $parceiro->descricao }}</p>
                             <hr style="border: 1px solid;" class="text-white m-4">
-                            <p>{{ $row->endereco }}</p>
-                            @if($row->fones)
-                                <p><i class="fa fa-phone text-white"></i> {{ $row->fones }}</p>
+                            <p>{{ $parceiro->endereco }}</p>
+                            @if($parceiro->fones)
+                                <p><i class="fa fa-phone text-white"></i> {{ $parceiro->fones }}</p>
                             @endif
-                            @if($row->whatsapp)
+                            @if($parceiro->whatsapp)
                                 <p>
-                                    <a href="https://api.whatsapp.com/send?phone=55{{ $row->whatsapp }}&text=Em%20que%20posso%20ajudar%3F">
-                                    <i class="fab fa-whatsapp text-success"></i> {{ $row->whatsapp }}
+                                    <a href="https://api.whatsapp.com/send?phone=55{{ $parceiro->whatsapp }}&text=Em%20que%20posso%20ajudar%3F">
+                                    <i class="fab fa-whatsapp text-success"></i> {{ $parceiro->whatsapp }}
                                     </a>
                                 </p>
                             @endif
-                            @if($row->email)
-                                <p><i class="fa fa-envelope text-white"></i> {{ $row->email }}</p>
+                            @if($parceiro->email)
+                                <p><i class="fa fa-envelope text-white"></i> {{ $parceiro->email }}</p>
                             @endif
                             <p style="font-size: x-large;">
-                                @if($row->link)
-                                    <a href="{{ $row->link }}"><i class="fa fa-link"></i></a>
+                                @if($parceiro->link)
+                                    <a href="{{ $parceiro->link }}"><i class="fa fa-link"></i></a>
                                 @endif
-                                @if($row->facebook)
-                                    <a href="{{ $row->facebook }}"><i class="fab fa-facebook text-primary"></i></a>
+                                @if($parceiro->facebook)
+                                    <a href="{{ $parceiro->facebook }}"><i class="fab fa-facebook text-primary"></i></a>
                                 @endif
-                                @if($row->instagram)
-                                    <a href="{{ $row->instagram }}"><i class="fab fa-instagram text-warning"></i></a>
+                                @if($parceiro->instagram)
+                                    <a href="{{ $parceiro->instagram }}"><i class="fab fa-instagram text-warning"></i></a>
                                 @endif
-                                @if($row->youtube)
-                                    <a href="{{ $row->youtube }}"><i class="fab fa-youtube text-danger"></i></a>
+                                @if($parceiro->youtube)
+                                    <a href="{{ $parceiro->youtube }}"><i class="fab fa-youtube text-danger"></i></a>
                                 @endif
-                                @if($row->twitter)
-                                    <a href="{{ $row->twitter }}"><i class="fab fa-twitter text-info"></i></a>
+                                @if($parceiro->twitter)
+                                    <a href="{{ $parceiro->twitter }}"><i class="fab fa-twitter text-info"></i></a>
                                 @endif
                             </p>
                         </div>

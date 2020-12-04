@@ -19,7 +19,7 @@ class EventoController extends Controller
      */
     public function index()
     {
-        $eventos = Event::paginate(10);
+        $eventos = Event::orderBy('id', 'DESC')->paginate(10);
         return view('admin.evento.index', compact('eventos'));
     }
 
@@ -45,7 +45,7 @@ class EventoController extends Controller
             'titulo' => 'required',
             'data' => 'required',
             'local' => 'required',
-            'imagem' => 'required|mimes:jpg,png,jpeg',
+            'imagem' => 'required|mimes:jpg,png,jpeg|max:2000',
         ]);
 
         if ($validator->fails()) {
@@ -133,7 +133,7 @@ class EventoController extends Controller
             'titulo' => 'required',
             'data' => 'required',
             'local' => 'required',
-            'imagem' => 'mimes:jpg,png,jpeg',
+            'imagem' => 'mimes:jpg,png,jpeg|max:2000',
         ]);
         if ($validator->fails()) {
             return redirect()->route('eventos.edit',$id)

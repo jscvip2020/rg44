@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('welcome') }}" target="_blank">
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
@@ -21,16 +21,16 @@
                     <x-jet-nav-link href="{{ route('medias.index') }}" :active="request()->routeIs(['medias.index','medias.create','medias.edit'])">
                         {{ __('Médias') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="" :active="request()->routeIs('admin.noticias')">
+                    <x-jet-nav-link href="{{ route('noticias.index') }}" :active="request()->routeIs(['noticias.index', 'noticias.create', 'noticias.edit'])">
                         {{ __('Noticias') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{route('users.index')}}" :active="request()->routeIs('users.index')">
                         {{ __('Usuários') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('parceiros.index') }}" :active="request()->routeIs('parceiros.index','parceiros.create','parceiros.edit')">
+                    <x-jet-nav-link href="{{ route('parceiros.index') }}" :active="request()->routeIs(['parceiros.index','parceiros.create','parceiros.edit'])">
                         {{ __('Parceiros') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('eventos.index') }}" :active="request()->routeIs('eventos.index','eventos.create','eventos.edit')">
+                    <x-jet-nav-link href="{{ route('eventos.index') }}" :active="request()->routeIs(['eventos.index','eventos.create','eventos.edit'])">
                         {{ __('Eventos') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('configs.index') }}" :active="request()->routeIs('configs.index')">
