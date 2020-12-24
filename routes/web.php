@@ -19,6 +19,9 @@ Route::namespace('FrontEnd')->group(function () {
     Route::get('/noticias', 'ControllerNoticia@index')->name('noticias.all');
     Route::get('/noticia/{id}/{slug}', 'ControllerNoticia@single')->name('noticia.single');
     Route::any('/noticias/all', 'ControllerNoticia@all')->name('noticias.full');
+
+    Route::get('pag/{id}/{slug}', 'ControllerPagina@pagina')->name('pag.pagina');
+    Route::get('pags/{id}/{slug}', 'ControllerPagina@fullpagina')->name('pag.fullpagina');
 });
 
 Route::namespace('BackEnd')->middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function () {
@@ -54,5 +57,15 @@ Route::namespace('BackEnd')->middleware(['auth:sanctum', 'verified'])->prefix('a
 
     Route::post('ckeditor/upload', 'CKEditorController@upload')->name('ckeditor.image-upload');
     Route::post('ckeditor/upload/{id}', 'CKEditorController@uploadEdit')->name('ckeditor.uploadEdit');
+
+
+    Route::post('ckeditor/uploaditem', 'CKEditorController@itemupload')->name('ckeditor.itemupload');
+    Route::post('ckeditor/uploaditem/{id}', 'CKEditorController@itemuploadEdit')->name('ckeditor.uploaditemEdit');
+
+    Route::resource('paginas', 'PaginaController', ['except' => ['show']]);
+    Route::get('paginas/{id}/{status}', 'PaginaController@status')->name('paginas.status');
+
+    Route::resource('itempaginas', 'ItemPaginaController', ['except' => ['show']]);
+    Route::get('itempaginas/{id}/{status}', 'ItemPaginaController@status')->name('itempaginas.status');
 
 });

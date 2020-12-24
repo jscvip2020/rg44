@@ -171,6 +171,5 @@ class GaleryController extends Controller
         }catch (ModelNotFoundException $e){
             return redirect()->route('galerias.index')->with('error', 'Não foi possível encontrar a galeria!');
         }
-        dd($gallery);
     }
 }

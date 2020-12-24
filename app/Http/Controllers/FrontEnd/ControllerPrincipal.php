@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\Gallery;
 use App\Models\Media;
+use App\Models\Pagina;
 use App\Models\Parceiro;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -20,9 +21,11 @@ class ControllerPrincipal extends Controller
     public $perPageList;
     public $perPagePhoto;
     public $media;
+    public $paginas;
 
     public function __construct()
     {
+        $this->paginas = Pagina::where('status',1)->get();
         $gallery = Gallery::where('status', 1)->first();
         $this->media = Media::where('status', 1)->get();
         if ($gallery) {
@@ -38,8 +41,8 @@ class ControllerPrincipal extends Controller
     {
         $row=null;
         $medias = $this->media;
-//        dd($medias);
-        return view('welcome', compact(['medias','row']));
+        $paginas = $this->paginas;
+        return view('welcome', compact(['medias', 'paginas','row']));
     }
 
     public function eventos()
@@ -47,8 +50,9 @@ class ControllerPrincipal extends Controller
         $row=null;
         $eventos = Event::where('status', 1)->orderBy('id', 'DESC')->paginate(10);
         $medias = $this->media;
+        $paginas = $this->paginas;
 
-        return view('frontend.eventos', compact(['medias', 'eventos', 'row']));
+        return view('frontend.eventos', compact(['medias', 'paginas', 'eventos', 'row']));
     }
 
     public function parceiros()
@@ -56,8 +60,9 @@ class ControllerPrincipal extends Controller
         $row = null;
         $parceiros = Parceiro::where('status', 1)->paginate(10);
         $medias = $this->media;
+        $paginas = $this->paginas;
 
-        return view('frontend.parceiros', compact(['medias', 'parceiros', 'row']));
+        return view('frontend.parceiros', compact(['medias', 'paginas', 'parceiros', 'row']));
     }
 
     public function emailContato(Request $request)
@@ -102,13 +107,15 @@ class ControllerPrincipal extends Controller
             $albunsEnd = null;
         }
         $medias = $this->media;
-        return view('frontend.fotos', compact(['albunsEnd', 'medias', 'row']));
+        $paginas = $this->paginas;
+        return view('frontend.fotos', compact(['albunsEnd', 'medias', 'paginas', 'row']));
     }
 
     public function album($id, $pg)
     {
         $row=null;
         $medias = $this->media;
+        $paginas = $this->paginas;
         $urlAlbuns = file_get_contents("https://api.flickr.com/services/rest/?method=flickr.photosets.getList&per_page={$this->perPageAlbum}&api_key={$this->apiKey}&user_id={$this->user_id}&format=json&nojsoncallback=1");
         $albuns = json_decode($urlAlbuns);
         $apiUrl = file_get_contents("https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key={$this->apiKey}&photoset_id={$id}&user_id={$this->user_id}&per_page={$this->perPagePhoto}&page={$pg}&privacy_filter=1&format=json&nojsoncallback=1");
@@ -122,7 +129,7 @@ class ControllerPrincipal extends Controller
         }
         $albunsEnd = $albuns->photosets->photoset;
         $desc = $albuns->photosets->photoset[0]->description->_content;
-        return view('frontend.album', compact(['fotos', 'pg', 'id', 'desc', 'albunsEnd', 'medias', 'row']));
+        return view('frontend.album', compact(['fotos', 'pg', 'id', 'desc', 'albunsEnd', 'medias', 'paginas', 'row']));
     }
 
     public function albumBusca(Request $request)
@@ -140,24 +147,27 @@ class ControllerPrincipal extends Controller
     {
         $row=null;
         $medias = $this->media;
+        $paginas = $this->paginas;
         $apiurl = file_get_contents("https://api.flickr.com/services/rest/?method=flickr.photosets.getList&per_page={$this->perPageList}&api_key={$this->apiKey}&user_id={$this->user_id}&format=json&nojsoncallback=1");
         $albuns = json_decode($apiurl);
         $albunsEnd = $albuns->photosets;
 //dd($albunsEnd);
-        return view('frontend.albunslist', compact(['albunsEnd', 'pg', 'medias', 'row']));
+        return view('frontend.albunslist', compact(['albunsEnd', 'pg', 'medias', 'paginas', 'row']));
     }
 
     public function sobre()
     {
         $row=null;
         $medias = $this->media;
-        return view('frontend.sobre', compact(['medias','row']));
+        $paginas = $this->paginas;
+        return view('frontend.sobre', compact(['medias', 'paginas','row']));
     }
 
     public function contato()
     {
         $row=null;
         $medias = $this->media;
-        return view('frontend.contato', compact(['medias','row']));
+        $paginas = $this->paginas;
+        return view('frontend.contato', compact(['medias', 'paginas','row']));
     }
 }

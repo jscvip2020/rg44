@@ -147,14 +147,6 @@ class NoticiaController extends Controller
     {
         try{
             $row= Noticia::findOrFail($id);
-            preg_match_all('/(http:\/\/[^\s]+)/', $row->texto, $text);
-            $imagemTextOld = [];
-            foreach ($text[0] as $urlText) {
-                $urlImagem = explode("/", $urlText);
-                $imagemTextOld[] .= explode("\"", end($urlImagem))[0];
-
-            }
-            //dd($imagemTextOld);
             return view('admin.noticia.edit', compact('row'));
 
         }catch (ModelNotFoundException $e){
@@ -268,7 +260,49 @@ class NoticiaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $row = Noticia::findOrFail($id);
+            $caminho = public_path("images/noticias/capas/" . $row->capa);
+
+            preg_match_all('/(http:\/\/[^\s]+)/', $row->texto, $text);
+            $imagemText = [];
+            foreach ($text[0] as $urlText) {
+
+                $urlImagem = explode("/", $urlText);
+                $imagemText[] .= explode("\"", end($urlImagem))[0];
+
+            }
+
+            foreach (File::glob(public_path('images/noticias/images/*.*')) as $imagem) {
+                $url = explode("/", $imagem);
+                $imagem = end($url);
+                $idImg = explode("-", $imagem)[0];
+                if($idImg == $id){
+                    if(in_array($imagem, $imagemText)){
+
+                        $file_path = public_path("images/noticias/images/" . $imagem);
+                        if (file_exists($file_path)) {
+                            File::delete($file_path);
+                        }
+                    }
+
+                }
+            }
+            if (file_exists($caminho)) {
+                  if(File::delete($caminho)) {
+                    $action = $row->delete();
+                }
+            }
+
+            if ($action) {
+                return redirect()->route('noticias.index')->with('success', "Noticia $row->titulo DELETADA com sucesso!");
+            } else {
+                return redirect()->route('noticias.index')->with('error', "Não foi possível DELETAR a Noticia  $row->titulo!");
+            }
+
+        }catch (ModelNotFoundException $e){
+            return redirect()->route('noticias.index')->with('error', 'Não foi possível encontrar a Noticia!');
+        }
     }
 
     /**

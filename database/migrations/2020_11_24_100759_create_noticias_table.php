@@ -15,7 +15,7 @@ class CreateNoticiasTable extends Migration
     {
         Schema::create('noticias', function (Blueprint $table) {
             $table->id();
-            $table->string('capa');
+            $table->string('capa')->default('default.jpg');
             $table->string('slug')->nullable();
             $table->string('titulo');
             $table->text('texto');

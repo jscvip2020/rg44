@@ -16,7 +16,7 @@
     <meta property="og:title" content="{{($row)?$row->titulo:'RG44 fotos e eventos'}}">
     <meta property="og:site_name" content="{{ env('APP_NAME') }}">
 
-    <meta property="og:description" content="{{($row)?strip_tags($row->texto):'Fotos e noticias de eventos de Pérola e região'}}">
+    <meta property="og:description" content="{{($row)?substr(strip_tags($row->texto),0,300):'Fotos e noticias de eventos de Pérola e região'}}">
 
     <meta property="og:image" content="{{ ($row)?($row->capa =='default.jpg')?asset('images/'.$row->capa):asset('images/noticias/capas/'.$row->capa):asset('images/'.env('LOGO_PRETO')) }}">
 

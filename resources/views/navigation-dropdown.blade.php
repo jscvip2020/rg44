@@ -15,6 +15,12 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('paginas.index') }}" :active="request()->routeIs(['paginas.index','paginas.create','paginas.edit'])">
+                        {{ __('Menus') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('itempaginas.index') }}" :active="request()->routeIs(['itempaginas.index','itempaginas.create','itempaginas.edit'])">
+                        {{ __('Paginas') }}
+                    </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('galerias.index') }}" :active="request()->routeIs(['galerias.index','galerias.create','galerias.edit'])">
                         {{ __('Fotos') }}
                     </x-jet-nav-link>

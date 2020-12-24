@@ -33,7 +33,7 @@
                         <div class="card-person-content">
                             <p class="text-justify">{{ $parceiro->descricao }}</p>
                             <hr style="border: 1px solid;" class="text-white m-4">
-                            <p>{{ $parceiro->endereco }}</p>
+                            <p>{!! $parceiro->endereco !!}</p>
                             @if($parceiro->fones)
                                 <p><i class="fa fa-phone text-white"></i> {{ $parceiro->fones }}</p>
                             @endif
