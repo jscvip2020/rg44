@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\BackEnd;
 
 use App\Http\Controllers\Controller;
+use App\Models\Itempagina;
 use App\Models\Pagina;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -126,11 +127,16 @@ class PaginaController extends Controller
     {
         try{
             $pagina = Pagina::findOrFail($id);
-            $action = $pagina->delete();
-            if ($action){
-                return redirect()->route('paginas.index')->with('success', "pagina $pagina->titulo DELETADA com sucesso!");
-            }else{
-                return redirect()->route('paginas.index')->with('error', "Não foi possível DELETAR a pagina  $pagina->titulo!");
+            $item = Itempagina::where('pagina_id',$id)->get();
+            if($item->count()){
+                return redirect()->route('paginas.index')->with('error', "O menu  contem items relacionados, mude os itens para outro menu ou exclua-os!");
+            }else {
+                $action = $pagina->delete();
+                if ($action) {
+                    return redirect()->route('paginas.index')->with('success', "pagina DELETADA com sucesso!");
+                } else {
+                    return redirect()->route('paginas.index')->with('error', "Não foi possível DELETAR a pagina!");
+                }
             }
         }catch (ModelNotFoundException $e){
             return redirect()->route('paginas.index')->with('error', 'Não foi possível encontrar a pagina!');
