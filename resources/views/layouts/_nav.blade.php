@@ -28,6 +28,10 @@
                 <a class="nav-link {{ (request()->route()->getName()=='eventos')? 'active' :'' }}"
                    href="{{ route('eventos') }}">Eventos</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ (request()->route()->getName()=='ensaios')? 'active' :'' }}"
+                   href="{{ route('ensaios') }}">Ensaios</a>
+            </li>
             @foreach($paginas as $pag)
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle {{ (request()->route()->getName()=='pag.pagina' OR request()->route()->getName()=='pag.fullpagina')? 'active' :'' }}"

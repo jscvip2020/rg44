@@ -150,16 +150,6 @@ class GaleryController extends Controller
         try{
             $gallery = Gallery::findOrFail($id);
 
-            if (!$status){
-                $galleryStatus = Gallery::all();
-                foreach ($galleryStatus as $gStatus) {
-                    $g = Gallery::find($gStatus->id);
-                    $g->update(['status' => 0]);
-                }
-            }else{
-                return redirect()->route('galerias.index')->with('error', 'Esta galeria já está ativa. Se quiser ative outra!');
-            }
-
             $action = $gallery->update(['status' => !$status]);
 
             if ($action){
