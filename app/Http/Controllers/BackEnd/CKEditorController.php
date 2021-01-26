@@ -6,25 +6,27 @@ use App\Http\Controllers\Controller;
 use App\Models\Itempagina;
 use App\Models\Noticia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 class CKEditorController extends Controller
 {
     public function upload(Request $request)
     {
-        $statement = Noticia::OrderBy('id', 'DESC')->first();
+         $statement = DB::select(DB::raw("select auto_increment from information_schema.tables where table_name = 'noticias' "));
+
         if ($statement) {
-            $ultimoID = $statement->id;
+            $ultimoID = $statement[0]->auto_increment;
         } else {
             $ultimoID = 0;
         }
-        $id = $ultimoID + 1;
+        $id = $ultimoID;
         if ($request->hasFile('upload')) {
             $originName = $request->file('upload')->getClientOriginalName();
             $fileName = pathinfo($originName, PATHINFO_FILENAME);
             $extension = $request->file('upload')->getClientOriginalExtension();
             $fileName = $id . '-' . $fileName . '_' . time() . '.' . $extension;
-            $request->file('upload')->move(public_path('images/noticias/images/'), $fileName);
+            $request->file('upload')->move('images/noticias/images/', $fileName);
             $CKEditorFuncNum = $request->input('CKEditorFuncNum');
             $url = asset('images/noticias/images/' . $fileName);
             $msg = 'Imagem enviada com sucesso';
@@ -36,19 +38,20 @@ class CKEditorController extends Controller
     }
     public function itemupload(Request $request)
     {
-        $statement = Itempagina::OrderBy('id', 'DESC')->first();
+        $statement = DB::select(DB::raw("select auto_increment from information_schema.tables where table_name = 'itempaginas' "));
+
         if ($statement) {
-            $ultimoID = $statement->id;
+            $ultimoID = $statement[0]->auto_increment;
         } else {
             $ultimoID = 0;
         }
-        $id = $ultimoID + 1;
+        $id = $ultimoID;
         if ($request->hasFile('upload')) {
             $originName = $request->file('upload')->getClientOriginalName();
             $fileName = pathinfo($originName, PATHINFO_FILENAME);
             $extension = $request->file('upload')->getClientOriginalExtension();
             $fileName = $id . '-' . $fileName . '_' . time() . '.' . $extension;
-            $request->file('upload')->move(public_path('images/pags/'), $fileName);
+            $request->file('upload')->move('images/pags/', $fileName);
             $CKEditorFuncNum = $request->input('CKEditorFuncNum');
             $url = asset('images/pags/' . $fileName);
             $msg = 'Imagem enviada com sucesso';
@@ -66,7 +69,7 @@ class CKEditorController extends Controller
             $fileName = str_replace(' ', '', pathinfo($originName, PATHINFO_FILENAME));
             $extension = $request->file('upload')->getClientOriginalExtension();
             $fileName = $id . '-' . $fileName . '_' . time() . '.' . $extension;
-            $request->file('upload')->move(public_path('images/noticias/images/'), $fileName);
+            $request->file('upload')->move('images/noticias/images/', $fileName);
             $CKEditorFuncNum = $request->input('CKEditorFuncNum');
             $url = asset('images/noticias/images/' . $fileName);
             $msg = 'Imagem enviada com sucesso';
@@ -83,7 +86,7 @@ class CKEditorController extends Controller
             $fileName = str_replace(' ', '', pathinfo($originName, PATHINFO_FILENAME));
             $extension = $request->file('upload')->getClientOriginalExtension();
             $fileName = $id . '-' . $fileName . '_' . time() . '.' . $extension;
-            $request->file('upload')->move(public_path('images/pags/'), $fileName);
+            $request->file('upload')->move('images/pags/', $fileName);
             $CKEditorFuncNum = $request->input('CKEditorFuncNum');
             $url = asset('images/pags/' . $fileName);
             $msg = 'Imagem enviada com sucesso';

@@ -68,7 +68,7 @@ class ParceiroController extends Controller
                     $c->aspectRatio();
                 });
             }
-            $sucessImagem = $img->save(public_path('images/parceiros/').$imageName);
+            $sucessImagem = $img->save('images/parceiros/'.$imageName);
             if ($sucessImagem) {
                 $action = Parceiro::create([
                     'nome' => $request->nome,
@@ -169,7 +169,7 @@ class ParceiroController extends Controller
                         'descricao' => $request->descricao
                     ]);
                 }else {
-                    $file_path = public_path("images/parceiros/" . $row->imagem);
+                    $file_path = "images/parceiros/" . $row->imagem;
 
                     $imageName = explode(".", $row->imagem)[0] . '.' . $request->imagem->getClientOriginalExtension();
                     $img = Image::make($request->imagem->getRealPath());
@@ -189,7 +189,7 @@ class ParceiroController extends Controller
                         File::delete($file_path);
                     };
 
-                    $sucessImagem = $img->save(public_path('images/parceiros/') . $imageName);
+                    $sucessImagem = $img->save('images/parceiros/' . $imageName);
                     if ($sucessImagem) {
                         $action = $row->update([
                             'nome' => $request->nome,
@@ -230,7 +230,7 @@ class ParceiroController extends Controller
     {
         try{
             $row = Parceiro::findOrFail($id);
-            $file_path = public_path("images/parceiros/" . $row->imagem);
+            $file_path = "images/parceiros/" . $row->imagem;
 
             if (file_exists($file_path)) {
                 if(File::delete($file_path)) {

@@ -8,6 +8,8 @@ use App\Models\Pagina;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use File;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
@@ -60,13 +62,13 @@ class ItemPaginaController extends Controller
             $imagemText[] .= explode("\"", end($urlImagem))[0];
 
         }
-        foreach (File::glob(public_path('images/pags/*.*')) as $imagem) {
+        foreach (File::glob('images/pags/*.*') as $imagem) {
             $url = explode("/", $imagem);
             $imagem = end($url);
             $idImg = explode("-", $imagem)[0];
             if($idImg == $id){
                 if(!in_array($imagem, $imagemText)){
-                    $file_path = public_path("images/pags/" . $imagem);
+                    $file_path = "images/pags/" . $imagem;
 
                     if (file_exists($file_path)) {
                         File::delete($file_path);
@@ -91,7 +93,7 @@ class ItemPaginaController extends Controller
             $imageName = time().'.'.$request->capa->getClientOriginalExtension();
             $img = Image::make($request->capa->getRealPath());
             $img->resize(600, 600);
-            $sucessImagem = $img->save(public_path('images/pags/capas/').$imageName);
+            $sucessImagem = $img->save('images/pags/capas/'.$imageName);
             if ($sucessImagem) {
                 $action = itempagina::create([
                     'pagina_id' => $request->pagina_id,
@@ -149,13 +151,13 @@ class ItemPaginaController extends Controller
             $imagemText[] .= explode("\"", end($urlImagem))[0];
         }
 
-        foreach (File::glob(public_path('images/pags/*.*')) as $imagem) {
+        foreach (File::glob('images/pags/*.*') as $imagem) {
             $url = explode("/", $imagem);
             $imagem = end($url);
             $idImg = explode("-", $imagem)[0];
             if($idImg == $id){
                 if(!in_array($imagem, $imagemText)){
-                    $file_path = public_path("images/pags/" . $imagem);
+                    $file_path = "images/pags/" . $imagem;
 
                     if (file_exists($file_path)) {
                         File::delete($file_path);
@@ -188,7 +190,7 @@ class ItemPaginaController extends Controller
                         'texto' => $request->texto,
                     ]);
                 }else {
-                    $file_path = public_path("images/pags/capas/" . $itempagina->capa);
+                    $file_path = "images/pags/capas/" . $itempagina->capa;
                     $imageName = time().'.'.$request->capa->getClientOriginalExtension();
                     $img = Image::make($request->capa->getRealPath());
                     $img->resize(600, 600);
@@ -197,7 +199,7 @@ class ItemPaginaController extends Controller
                         File::delete($file_path);
                     };
 
-                    $sucessImagem = $img->save(public_path('images/pags/capas/').$imageName);
+                    $sucessImagem = $img->save('images/pags/capas/'.$imageName);
 
                     if ($sucessImagem) {
                         $action = $itempagina->update([
@@ -233,7 +235,7 @@ class ItemPaginaController extends Controller
     {
         try{
             $row = Itempagina::findOrFail($id);
-            $caminho = public_path("images/pags/capas/" . $row->capa);
+            $caminho = "images/pags/capas/" . $row->capa;
 
             preg_match_all('/(http:\/\/[^\s]+)/', $row->texto, $text);
             $imagemText = [];
@@ -243,14 +245,14 @@ class ItemPaginaController extends Controller
 
             }
 
-            foreach (File::glob(public_path('images/pags/*.*')) as $imagem) {
+            foreach (File::glob('images/pags/*.*') as $imagem) {
                 $url = explode("/", $imagem);
                 $imagem = end($url);
                 $idImg = explode("-", $imagem)[0];
                 if($idImg == $id){
                     if(in_array($imagem, $imagemText)){
 
-                        $file_path = public_path("images/pags/" . $imagem);
+                        $file_path = "images/pags/" . $imagem;
                         if (file_exists($file_path)) {
                             File::delete($file_path);
                         }

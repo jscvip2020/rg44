@@ -22,7 +22,12 @@ Route::namespace('FrontEnd')->group(function () {
 
     Route::get('pag/{id}/{slug}', 'ControllerPagina@pagina')->name('pag.pagina');
     Route::get('pags/{id}/{slug}', 'ControllerPagina@fullpagina')->name('pag.fullpagina');
+
+    Route::get('/ensaios', 'ControllerPrincipal@ensaios')->name('ensaios');
+    Route::get('/ensaio/{id}/{nome}', 'ControllerPrincipal@ensaio')->name('ensaio');
 });
+
+//BackEnd
 
 Route::namespace('BackEnd')->middleware(['auth:sanctum', 'verified'])->prefix('admin')->group(function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
@@ -67,5 +72,8 @@ Route::namespace('BackEnd')->middleware(['auth:sanctum', 'verified'])->prefix('a
 
     Route::resource('itempaginas', 'ItemPaginaController', ['except' => ['show']]);
     Route::get('itempaginas/{id}/{status}', 'ItemPaginaController@status')->name('itempaginas.status');
+
+    Route::resource('ensaios', 'EnsaioController', ['except' => ['show']]);
+    Route::get('ensaios/{id}/{status}', 'EnsaioController@status')->name('ensaios.status');
 
 });

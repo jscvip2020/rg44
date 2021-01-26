@@ -30,6 +30,7 @@ class EventoController extends Controller
      */
     public function create()
     {
+
         return view('admin.evento.create');
     }
 
@@ -66,7 +67,7 @@ class EventoController extends Controller
                     $c->aspectRatio();
                 });
             }
-            $sucessImagem = $img->save(public_path('images/eventos/').$imageName);
+            $sucessImagem = $img->save('images/eventos/'.$imageName);
             if ($sucessImagem) {
                 $action = Event::create([
                     'titulo' => $request->titulo,
@@ -150,7 +151,7 @@ class EventoController extends Controller
                         'link' => $request->link,
                     ]);
                 }else {
-                    $file_path = public_path("images/eventos/" . $row->imagem);
+                    $file_path = "images/eventos/" . $row->imagem;
 
                     $imageName = explode(".", $row->imagem)[0] . '.' . $request->imagem->getClientOriginalExtension();
                     $img = Image::make($request->imagem->getRealPath());
@@ -170,7 +171,7 @@ class EventoController extends Controller
                         File::delete($file_path);
                     };
 
-                    $sucessImagem = $img->save(public_path('images/eventos/') . $imageName);
+                    $sucessImagem = $img->save('images/eventos/' . $imageName);
                     if ($sucessImagem) {
                         $action = $row->update([
                             'titulo' => $request->titulo,
@@ -203,7 +204,7 @@ class EventoController extends Controller
     {
         try{
             $row = Event::findOrFail($id);
-            $file_path = public_path("images/eventos/" . $row->imagem);
+            $file_path = "images/eventos/" . $row->imagem;
 
             if (file_exists($file_path)) {
                 if(File::delete($file_path)) {

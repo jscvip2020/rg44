@@ -5,11 +5,11 @@
  * Date: 13/11/2020
  * Time: 13:19
  */ ?>
-@section('titulo', ' - Editando evento')
+@section('titulo', ' - Editando Parceiro')
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Editando evento') }}
+            {{ __('Editando Parceiro') }}
         </h2>
     </x-slot>
 

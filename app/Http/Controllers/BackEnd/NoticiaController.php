@@ -59,13 +59,13 @@ class NoticiaController extends Controller
             $imagemText[] .= explode("\"", end($urlImagem))[0];
 
         }
-        foreach (File::glob(public_path('images/noticias/images/*.*')) as $imagem) {
+        foreach (File::glob('images/noticias/images/*.*') as $imagem) {
             $url = explode("/", $imagem);
             $imagem = end($url);
             $idImg = explode("-", $imagem)[0];
             if($idImg == $id){
                 if(!in_array($imagem, $imagemText)){
-                    $file_path = public_path("images/noticias/images/" . $imagem);
+                    $file_path = "images/noticias/images/" . $imagem;
 
                     if (file_exists($file_path)) {
                         File::delete($file_path);
@@ -99,7 +99,7 @@ class NoticiaController extends Controller
                     $c->aspectRatio();
                 });
             }
-            $sucessImagem = $img->save(public_path('images/noticias/capas/').$imageName);
+            $sucessImagem = $img->save('images/noticias/capas/'.$imageName);
             if ($sucessImagem) {
                 $action = noticia::create([
                     'titulo' => $request->titulo,
@@ -172,13 +172,13 @@ class NoticiaController extends Controller
 
         }
 
-        foreach (File::glob(public_path('images/noticias/images/*.*')) as $imagem) {
+        foreach (File::glob('images/noticias/images/*.*') as $imagem) {
             $url = explode("/", $imagem);
             $imagem = end($url);
             $idImg = explode("-", $imagem)[0];
             if($idImg == $id){
                 if(!in_array($imagem, $imagemText)){
-                    $file_path = public_path("images/noticias/images/" . $imagem);
+                    $file_path = "images/noticias/images/" . $imagem;
 
                     if (file_exists($file_path)) {
                        File::delete($file_path);
@@ -209,7 +209,7 @@ class NoticiaController extends Controller
                         'texto' => $request->texto,
                     ]);
                 }else {
-                    $file_path = public_path("images/noticias/capas/" . $row->capa);
+                    $file_path = "images/noticias/capas/" . $row->capa;
                     $imageName = time().'.'.$request->capa->getClientOriginalExtension();
                     $img = Image::make($request->capa->getRealPath());
                     $width = getimagesize($request->capa)[0];
@@ -227,7 +227,7 @@ class NoticiaController extends Controller
                         File::delete($file_path);
                     };
 
-                    $sucessImagem = $img->save(public_path('images/noticias/capas/').$imageName);
+                    $sucessImagem = $img->save('images/noticias/capas/'.$imageName);
 
                     if ($sucessImagem) {
                         $action = $row->update([
@@ -273,14 +273,14 @@ class NoticiaController extends Controller
 
             }
 
-            foreach (File::glob(public_path('images/noticias/images/*.*')) as $imagem) {
+            foreach (File::glob('images/noticias/images/*.*') as $imagem) {
                 $url = explode("/", $imagem);
                 $imagem = end($url);
                 $idImg = explode("-", $imagem)[0];
                 if($idImg == $id){
                     if(in_array($imagem, $imagemText)){
 
-                        $file_path = public_path("images/noticias/images/" . $imagem);
+                        $file_path = "images/noticias/images/" . $imagem;
                         if (file_exists($file_path)) {
                             File::delete($file_path);
                         }
