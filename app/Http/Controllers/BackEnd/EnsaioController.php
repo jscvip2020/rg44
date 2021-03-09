@@ -69,8 +69,6 @@ class EnsaioController extends Controller
             'nome' => 'required',
             'sobrenome' => 'required',
             'cidadeuf' => 'required',
-            'grau_escolaridade' => 'required',
-            'escolaridade' => 'required',
             'ensaio_id' => 'required',
         ]);
 
@@ -128,8 +126,6 @@ class EnsaioController extends Controller
             'nome' => 'required',
             'sobrenome' => 'required',
             'cidadeuf' => 'required',
-            'grau_escolaridade' => 'required',
-            'escolaridade' => 'required',
             'ensaio_id' => 'required',
         ]);
         if ($validator->fails()) {

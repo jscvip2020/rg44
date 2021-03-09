@@ -24,7 +24,7 @@
                         <th></th>
                         <th class="text-left">Nome</th>
                         <th class="text-left">Cidade-UF</th>
-                        <th class="text-left">Escolaridade</th>
+                        <th class="text-left">Atividade</th>
                         <th class="text-center">Ativo?</th>
                         <th class="text-center"></th>
                     </tr>
@@ -45,7 +45,7 @@
                             </td>
                             <td>{{ $row->nome.' '.$row->sobrenome }}</td>
                             <td>{{ $row->cidadeuf }}</td>
-                            <td>{{ $row->grau_escolaridade.' ensino '.$row->escolaridade }}</td>
+                            <td>{{ $row->atividade }}</td>
                             <td class="text-center align-middle">
                                 @if($row->status)
                                     <a href="{{ route('ensaios.status',[$row->id,$row->status]) }}"

@@ -72,58 +72,15 @@
                                         @endif
                                     </div>
                                 </div>
-
-                                <div class="flex">
-                                    @php $input = 'grau_escolaridade'; @endphp
-                                    <div class="col-md-6">
-                                        <label for="{{$input}}" class="col-md-12 control-label">Grau de
-                                            Escolaridade</label>
-
-                                        <div class="col-md-12">
-                                            <select id="{{$input}}" type="text"
-                                                    class="form-control {{ $errors->has($input) ? ' is-invalid' : '' }}"
-                                                    name="{{$input}}">
-                                                <option value="cursando" {{ ($row) ? ($row->$input == 'cursando') ? 'selected' : '' : '' }}>Cursando</option>
-                                                <option value="incompleto" {{ ($row) ? ($row->$input == 'incompleto') ? 'selected' : '' : '' }}>Incompleto</option>
-                                                <option value="completo" {{ ($row) ? ($row->$input == 'completo') ? 'selected' : '' : '' }}>Completo</option>
-                                            </select>
-                                            @if ($errors->has($input))
-                                                <span class="help-block invalid-feedback"><strong>{{ $errors->first($input) }}</strong></span>
-                                            @endif
-                                        </div>
-                                    </div>
-
-                                    @php $input = 'escolaridade'; @endphp
-                                    <div class="col-md-6">
-                                        <label for="{{$input}}" class="col-md-12 control-label">Escolaridade</label>
-
-                                        <div class="col-md-12">
-                                            <select id="{{$input}}" type="text"
-                                                    class="form-control {{ $errors->has($input) ? ' is-invalid' : '' }}"
-                                                    name="{{$input}}">
-                                                <option value="fundamental" {{ ($row) ? ($row->$input == 'fundamental') ? 'selected' : '' : '' }}>Fundamental</option>
-                                                <option value="medio" {{ ($row) ? ($row->$input == 'medio') ? 'selected' : '' : '' }}>Médio</option>
-                                                <option value="superior" {{ ($row) ? ($row->$input == 'superior') ? 'selected' : '' : '' }}>Superior</option>
-                                                <option value="posGraduacao" {{ ($row) ? ($row->$input == 'posGraduacao') ? 'selected' : '' : '' }}>Pós graduação</option>
-                                                <option value="mestrado" {{ ($row) ? ($row->$input == 'mestrado') ? 'selected' : '' : '' }}>Mestrado</option>
-                                                <option value="doutorado" {{ ($row) ? ($row->$input == 'doutorado') ? 'selected' : '' : '' }}>Doutorado</option>
-                                            </select>
-                                            @if ($errors->has($input))
-                                                <span class="help-block invalid-feedback"><strong>{{ $errors->first($input) }}</strong></span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-
-                                @php $input = 'graduadoem'; @endphp
+                                @php $input = 'atividade'; @endphp
                                 <div class="form-group">
-                                    <label for="{{$input}}" class="col-md-12 control-label">Área de estudo</label>
+                                    <label for="{{$input}}" class="col-md-12 control-label">Atividade</label>
 
                                     <div class="col-md-12">
                                         <input id="{{$input}}" type="text"
                                                class="form-control {{ $errors->has($input) ? ' is-invalid' : '' }}"
                                                name="{{$input}}"
-                                               placeholder="Area de estudo"
+                                               placeholder="Atividade"
                                                value="{{ ($row) ? $row->$input : old($input)}}">
                                         @if ($errors->has($input))
                                             <span class="help-block invalid-feedback"><strong>{{ $errors->first($input) }}</strong></span>
@@ -131,15 +88,15 @@
                                     </div>
                                 </div>
 
-                                @php $input = 'esporte'; @endphp
+                                @php $input = 'torcida'; @endphp
                                 <div class="form-group">
-                                    <label for="{{$input}}" class="col-md-12 control-label">Esporte preferido</label>
+                                    <label for="{{$input}}" class="col-md-12 control-label">Torcida</label>
 
                                     <div class="col-md-12">
                                         <input id="{{$input}}" type="text"
                                                class="form-control {{ $errors->has($input) ? ' is-invalid' : '' }}"
                                                name="{{$input}}"
-                                               placeholder="Esporte preferido"
+                                               placeholder="Torcida"
                                                value="{{ ($row) ? $row->$input : old($input)}}">
                                         @if ($errors->has($input))
                                             <span class="help-block invalid-feedback"><strong>{{ $errors->first($input) }}</strong></span>
@@ -223,16 +180,14 @@
                                         @endif
                                     </div>
                                 </div>
-                                @php $input = 'prato'; @endphp
+                                @php $input = 'mensagem'; @endphp
                                 <div class="form-group">
-                                    <label for="{{$input}}" class="col-md-12 control-label">Prato Preferido</label>
+                                    <label for="{{$input}}" class="col-md-12 control-label">Mensagem</label>
 
                                     <div class="col-md-12">
-                                        <input id="{{$input}}" type="text"
+                                        <textarea id="{{$input}}" type="text"
                                                class="form-control {{ $errors->has($input) ? ' is-invalid' : '' }}"
-                                               name="{{$input}}"
-                                               placeholder="Prato Preferido"
-                                               value="{{ ($row) ? $row->$input : old($input)}}">
+                                                  name="{{$input}}">{{ ($row) ? $row->$input : old($input)}}</textarea>
                                         @if ($errors->has($input))
                                             <span class="help-block invalid-feedback"><strong>{{ $errors->first($input) }}</strong></span>
                                         @endif

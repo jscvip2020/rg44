@@ -24,25 +24,8 @@
                                 {{ $ensaio->cidadeuf }}
                             </div>
                             <div class="desc__escola">
-                                @if($ensaio->escolaridade == 'fundamental' || $ensaio->escolaridade == 'medio')
-                                    @if($ensaio->grau_escolaridade == 'cursando')
-                                        {{ ucfirst($ensaio->grau_escolaridade).' ensino '.ucfirst($ensaio->escolaridade)}}
-                                    @else
-                                        {{ 'Ensino '.ucfirst($ensaio->escolaridade).' '.ucfirst($ensaio->grau_escolaridade)}}
-                                    @endif
-                                @else
-                                    @if($ensaio->escolaridade == 'superior')
-                                        @if($ensaio->grau_escolaridade == 'cursando')
-                                            {{ ucfirst($ensaio->grau_escolaridade).' ensino '.ucfirst($ensaio->escolaridade).' em '.ucfirst($ensaio->graduadoem) }}
-                                        @else
-                                            {{ 'Ensino '.ucfirst($ensaio->escolaridade).' '.ucfirst($ensaio->grau_escolaridade).' em '.ucfirst($ensaio->graduadoem) }}
-                                        @endif
-                                    @else
-                                        @if($ensaio->grau_escolaridade == 'cursando')
-                                            {{ ucfirst($ensaio->grau_escolaridade).' '.ucfirst($ensaio->escolaridade).' em '.ucfirst($ensaio->graduadoem) }}
-                                        @else
-                                            {{ ucfirst($ensaio->escolaridade).' '.ucfirst($ensaio->grau_escolaridade).' em '.ucfirst($ensaio->graduadoem) }}                                    @endif
-                                    @endif
+                                @if($ensaio->atividade)
+                                    {{ $ensaio->atividade }}
                                 @endif
                             </div>
                         </div>
@@ -50,34 +33,41 @@
                             <div class="grupo__detalhe col-md-6">
                                 @if($ensaio->sonho != '')
                                     <div class="ensaio__detalhes" style="width: 100%;">
-                                        <span>Seu maior sonho: </span>{{ $ensaio->sonho }}
+                                        <span>Sonho: </span>{{ $ensaio->sonho }}
                                     </div>
                                 @endif
-                                @if($ensaio->hobby != '')
+                                    @if($ensaio->hobby != '')
                                     <div class="ensaio__detalhes">
-                                        <span>Seu hobby:</span>{{ $ensaio->hobby}}
+                                        <span>Hobby:</span>{{ $ensaio->hobby}}
+                                    </div>
+                                @endif
+
+                                    @if($ensaio->torcida != '')
+                                    <div class="ensaio__detalhes">
+                                        <span>Torcida:</span>{{ $ensaio->torcida}}
+                                    </div>
+                                @endif
+                                    @if($ensaio->musica != '')
+                                        <div class="ensaio__detalhes">
+                                            <span>Música:</span>{{ $ensaio->musica}}
+                                        </div>
+                                    @endif
+                                @if($ensaio->personalidade != '')
+                                    <div class="ensaio__detalhes">
+                                        <span>Personalidade:</span>{{ $ensaio->personalidade}}
                                     </div>
                                 @endif
                                 @if($ensaio->frase != '')
                                     <div class="ensaio__detalhes">
-                                        <span>Uma frase:</span>"{{ $ensaio->frase}}"
+                                        <span>Frase:</span>"{{ $ensaio->frase}}"
                                     </div>
                                 @endif
-                                @if($ensaio->musica != '')
-                                    <div class="ensaio__detalhes">
-                                        <span>Música preferida:</span>{{ $ensaio->musica}}
-                                    </div>
-                                @endif
-                                @if($ensaio->personalidade != '')
-                                    <div class="ensaio__detalhes">
-                                        <span>Uma personalidade:</span>{{ $ensaio->personalidade}}
-                                    </div>
-                                @endif
-                                @if($ensaio->prato != '')
-                                    <div class="ensaio__detalhes">
-                                        <span>Prato preferido:</span>{{ $ensaio->prato}}
-                                    </div>
-                                @endif
+                                   @if($ensaio->mensagem != '')
+                                        <div class="ensaio__detalhes" style="width: 100%;">
+                                            <span>Mensagem: </span>{{ $ensaio->mensagem }}
+                                        </div>
+                                    @endif
+
 
                             </div>
                             <div class="grupo__medias col-md-6">
@@ -128,8 +118,8 @@
                             <a data-fancybox="gallery"
                                href="https://farm{{$foto->farm}}.staticflickr.com/{{$foto->server . "/" . $foto->id . "_" . $foto->secret}}_c.jpg"
                                title="{{$ensaio->nome.' '.$ensaio->sobrenome}}">
-                        <img src="https://farm{{$foto->farm}}.staticflickr.com/{{$foto->server . "/" . $foto->id . "_" . $foto->secret}}.jpg"
-                             alt="{{$ensaio->nome.' '.$ensaio->sobrenome}}">
+                                <img src="https://farm{{$foto->farm}}.staticflickr.com/{{$foto->server . "/" . $foto->id . "_" . $foto->secret}}.jpg"
+                                     alt="{{$ensaio->nome.' '.$ensaio->sobrenome}}">
                             </a>
                         </div>
                     @endforeach
@@ -152,8 +142,8 @@
             '</button>';
 
         // Make button clickable using event delegation
-        $('body').on('click', '[data-fancybox-fb]', function() {
-            window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(window.location.href)+"&t="+encodeURIComponent(document.title), '','left=0,top=0,width=600,height=300,menubar=no,toolbar=no,resizable=yes,scrollbars=yes');
+        $('body').on('click', '[data-fancybox-fb]', function () {
+            window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href) + "&t=" + encodeURIComponent(document.title), '', 'left=0,top=0,width=600,height=300,menubar=no,toolbar=no,resizable=yes,scrollbars=yes');
         });
 
         $('[data-fancybox="gallery"]').fancybox({

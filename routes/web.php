@@ -60,6 +60,7 @@ Route::namespace('BackEnd')->middleware(['auth:sanctum', 'verified'])->prefix('a
     Route::get('noticias/{id}/{status}', 'NoticiaController@status')->name('noticias.status');
     Route::get('noticia/{id}/{fixo}', 'NoticiaController@fixo')->name('noticia.fixo');
 
+//    Route::post('ckeditor/upload', 'CKEditorController@upload')->name('ckeditor.image-upload');
     Route::post('ckeditor/upload', 'CKEditorController@upload')->name('ckeditor.image-upload');
     Route::post('ckeditor/upload/{id}', 'CKEditorController@uploadEdit')->name('ckeditor.uploadEdit');
 
