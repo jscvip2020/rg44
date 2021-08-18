@@ -139,8 +139,13 @@ class ControllerPrincipal extends Controller
             $fotosBusca = json_decode(file_get_contents("https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key={$this->apiKey}&photoset_id={$id}&user_id={$this->user_id}&per_page={$this->perPagePhoto}&page={$pg}&privacy_filter=1&format=json&nojsoncallback=1"));
             $fotos = $fotosBusca->photoset;
         }
-        $albunsEnd = $albuns->photosets->photoset;
+
+        $urlAlbuns2 = file_get_contents("https://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key={$this->apiKey}&user_id={$this->user_id}&format=json&nojsoncallback=1");
+        $albuns2 = json_decode($urlAlbuns2);
+        $albunsEnd = $albuns2->photosets->photoset;
         $desc = $albuns->photosets->photoset[0]->description->_content;
+//        dd($albunsEnd);
+
         return view('frontend.album', compact(['fotos', 'pg', 'id', 'desc', 'albunsEnd', 'medias', 'paginas', 'row']));
     }
 
